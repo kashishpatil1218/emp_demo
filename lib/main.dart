@@ -18,11 +18,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        // '/':(context)=> HomeScreen(),
-        // '/':(context)=> AttendanceScreen(),
-        // '/':(context)=> LateComersScreen(),
-        // '/':(context)=> EarlyLeaversScreen(),
-        '/':(context)=> EmployeeListScreen(),
+        '/':(context)=> HomeScreen(),
+        '/attendance':(context)=> AttendanceScreen(),
+        '/lateComers':(context)=> LateComersScreen(),
+        '/earlyLeave':(context)=> EarlyLeaversScreen(),
+        '/employeeList':(context)=> EmployeeListScreen(),
       }
     );
   }

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'attendance/attendance_page.dart';
+import 'early leavers/eraly_leavers.dart';
+import 'employyeList/employee.dart';
+import 'late_comes/late_comes.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                     height: 79,
                     width: 79,
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: Colors.greenAccent,
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: AssetImage('asset/img/profile.png'),
@@ -43,20 +48,16 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView(
+              child:ListView(
                 children: [
-                  buildDrawerItem('asset/img/attendance.png', "Attendance"),
-                  buildDrawerItem('asset/img/late_comes.png', "Late Comers"),
-                  buildDrawerItem('asset/img/Book_open.png', "Early Leavers"),
-                  buildDrawerItem('asset/img/leaves.png', "Leaves"),
-                  buildDrawerItem(
-                    'asset/img/issue report.png',
-                    "Issues Report",
-                  ),
-                  buildDrawerItem('asset/img/incident.png', "Incident Report"),
-                  buildDrawerItem('asset/img/employye.png', "Employee List"),
-
-                  buildDrawerItem('asset/img/logout.png', "Log out"),
+                  buildDrawerItem(context, 'asset/img/attendance.png', "Attendance", AttendanceScreen()),
+                  buildDrawerItem(context, 'asset/img/late_comes.png', "Late Comers", LateComersScreen()),
+                  buildDrawerItem(context, 'asset/img/Book_open.png', "Early Leavers", EarlyLeaversScreen()),
+                  buildDrawerItem(context, 'asset/img/leaves.png', "Leaves", EarlyLeaversScreen()),//TODO change page
+                  buildDrawerItem(context, 'asset/img/issue report.png', "Issues Report", EarlyLeaversScreen()),//TODO change page
+                  buildDrawerItem(context, 'asset/img/incident.png', "Incident Report", EarlyLeaversScreen()),//TODO change page
+                  buildDrawerItem(context, 'asset/img/employye.png', "Employee List", EmployeeListScreen()),
+                  buildDrawerItem(context, 'asset/img/logout.png', "Log out", EarlyLeaversScreen()),//TODO change page
                 ],
               ),
             ),
@@ -67,7 +68,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget buildDrawerItem(String img, String title) {
+  Widget buildDrawerItem(BuildContext context,String img, String title,Widget page) {
     return ListTile(
       leading: Image.asset(img),
       title: Text(
@@ -76,7 +77,9 @@ class HomeScreen extends StatelessWidget {
           textStyle: TextStyle(color: Color(0xff414042), fontSize: 20),
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page,));
+      },
     );
   }
 }
