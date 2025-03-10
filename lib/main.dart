@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/':(context)=> HomeScreen(),
+        '/':(context)=> LeaveRequestScreen(),
         '/attendance':(context)=> AttendanceScreen(),
         '/lateComers':(context)=> LateComersScreen(),
         '/earlyLeave':(context)=> EarlyLeaversScreen(),
